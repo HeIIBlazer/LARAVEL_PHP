@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -30,3 +31,7 @@ Route::get('/editevent/{event}', [EventController::class, 'edit']);
 Route::post('/editevent/{event}', [EventController::class, 'update']);
 //---------------------- delete event
 Route::delete('/eventlist/{event}', [EventController::class, 'destroy']);
+
+//by register user
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/userByrole', [UserController::class, 'userByrole']);

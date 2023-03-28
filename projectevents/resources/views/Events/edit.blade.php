@@ -8,7 +8,7 @@
 
 <div class="x_content">
     <div class="demo-container">
-        <a href="eventlist" class="btn btn-primary btn-sm btn-flat">
+        <a href="/eventlist" class="btn btn-primary btn-sm btn-flat">
             <i class="fa fa-backward"></i> Back to list</a>
             @if ($errors->any())
                 <div class="alert alert-danger">
