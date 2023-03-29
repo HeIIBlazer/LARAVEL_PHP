@@ -54,16 +54,15 @@ class UserController extends Controller
             'password_confirmation' => 'required',
 
         ]);
-        if ($request->password === $request->password_confirmation) {
             //Запрос на добавление пользователя
             User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => $request->role,
-            ]);
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+        ]);
+
             return redirect('users');
-        }
     }
 
     /**
