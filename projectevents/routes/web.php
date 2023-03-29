@@ -35,3 +35,11 @@ Route::delete('/eventlist/{event}', [EventController::class, 'destroy']);
 //by register user
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/userByrole', [UserController::class, 'userByrole']);
+//add user
+Route::get('/adduser', [UserController::class, 'create']);
+Route::post('/adduser', [UserController::class, 'store']);
+//edit user
+Route::get('/edituser/{user}', [UserController::class, 'edit']);
+Route::post('/edituser/{user}', [UserController::class, 'update']);
+//delete user
+Route::delete('/users/{user}', [UserController::class,  'destroy']);

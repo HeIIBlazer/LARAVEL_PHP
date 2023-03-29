@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="box-header with-border">
+<div class="x_content">
     <h3 class="box-title"><strong>Users manage</strong></h3>
     <div class="add">
         <a href="adduser" class ="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New user</a>
@@ -24,8 +24,47 @@
                 @endforeach
             </select>
         </div>
+    </div>
+                
+        @if (count($users ?? '') > 0)
+        <table id="database" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th width="10%">id</th>
+                    <th width="20%">Name</th>
+                    <th width="20%">Role</th>
+                    <th width="50%">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                <tr>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->role}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>
+                        <form action="{{ url('users')}}" method="POST">
+                            <a href="{{url('edituser/'.$user->id)}}" title="edit">
+                                <i class="fa fa-btn fa-edit"></i>
+                            </a>
+
+                            {{-- {{ csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-link">
+                                <i class="fa fa-btn fa-trash"></i>
+                            </button> --}}
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @else
+        <p>Data is empty</p>
+        @endif
         </form>
 
-    </div>
+
 </div>
 @endsection
