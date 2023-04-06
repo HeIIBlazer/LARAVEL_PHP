@@ -41,8 +41,7 @@
                                 class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>User</h2>
+                            <h2>Welcome,{{Auth::user()->name}}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -96,11 +95,11 @@
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src='{{ asset("components/images/user.png")}}' alt="">User
+                                    <img src='{{ asset("components/images/user.png")}}' alt="">{{Auth::user()->name}}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{url('/profile/')}}"> Profile</a>
+                                    <a class="dropdown-item" href="{{url('/profile/'.Auth::user()->id)}}"> Profile</a>
 
                                     <a class="dropdown-item" href="{{ url('/logout') }}">
                                         <i class="fa fa-sign-out pull-right"></i> Log Out

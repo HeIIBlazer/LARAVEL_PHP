@@ -37,6 +37,22 @@
                     <input type="email" name="email" class="form-control" placeholder="Email" value="{{$user->email}}">
                 </div>
             </div>
+
+            <div>
+                <label for="email" class="col-md-3 control-label"><strong>Role: </strong></label>
+                <div class="col-sm-6">
+                    <select name="role" class="form-control input-sm" @if(Auth::user()->role!='admin') disabled @endif>
+                        @foreach ($roles as $role)
+                            <option value="{{$role}}"
+                                @if ($role==$user->role)
+                                    selected
+                                @endif>{{$role}}
+                            </option>
+                            
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -52,21 +68,8 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="role" class="col-sm-3 control-label">Role:</label>
-
-                    <select name="role" class="from-control input-sm">
-                        @foreach($roles as $role)
-                        <option value="{{$role}}"
-                        @if($role=='user') selected @endif
-                        >{{$role}}</option>
-                    @endforeach
-                    </select>
-            </div>
-        </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Update event</button>
+                <button type="submit" class="btn btn-primary">Update user</button>
             </div>
             </form>
     </div>
