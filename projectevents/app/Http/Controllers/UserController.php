@@ -66,6 +66,25 @@ class UserController extends Controller
             return redirect('users');
     }
 
+    public function form_register()
+    {
+        return view('users/register');
+    }
+
+    public function store_register(Request $request)
+    {
+
+        //Запрос на добавление пользователя
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'user',
+        ]);
+
+        return view('users.registerResult');
+    }
+
     /**
      * Display the specified resource.
      */

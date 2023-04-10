@@ -53,6 +53,7 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
+                                @if(Gate::allows('isAdmin')|| Gate::allows('isManager'))
                                 <li><a><i class="fa fa-home"></i> Events Manage </a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ url('/eventlist') }}">Events List</a></li>
@@ -63,11 +64,14 @@
                                         <li><a href="{{ url('/registerlist') }}">Registration list</a></li>
                                     </ul>
                                 </li>
+                                @endif
+                                @if(Gate::allows('isAdmin'))
                                 <li><a><i class="fa fa-users"></i> Users Manage</a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ url('/users') }}">Users List</a></li>
                                     </ul>
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

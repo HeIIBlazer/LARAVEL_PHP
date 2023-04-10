@@ -1,3 +1,4 @@
+
 @extends('layouts.appLogin')
 
 @section('content')
@@ -10,31 +11,37 @@
                     {{session()->get('error')}}
                 </div>
                 @endif
-                <p class="login-box-msg">Sign in to start your dashboard</p>
+                <p class="login-box-msg">Sign up to start your dashboard</p>
                 <form action="{{url('login')}}" method="POST">
                     @csrf
-                    <h1>Login Form</h1>
+                    <h1>Sign Up Form</h1>
                     <div>
-                        <input type="email" class="form-control" name="email" placeholder="Email" required autofocus>
+                        <input type="text" class="form-control" name="name" placeholder="Name" required autofocus>
+                    </div>
+                    <div>
+                        <input type="email" class="form-control" name="email" placeholder="Email" required>
                     </div>
                     <div>
                         <input type="password" class="form-control" name="password" placeholder="Password" required>
                     </div>
                     <div>
+                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
+                    </div>
+                    <div>
                         <button type="submit" class="btn btn-default submit" name="login">
                             <i class="fa fa-sign-in"></i>
-                            Log In
+                            Sign Up
                         </button>
                     </div>
                     <div class="clearfix"></div>
                     <div class="separator">
                         <p class="change_link">
-                            <a href="/register" class="to_register"> Create Account </a>
+                            <a href="/" class="to_register"> Log In </a>
                         </p>
                         <div class="clearfix"></div>
                         <br />
                         <div>
-                            <h1><i class="fa fa-cubes"></i>LogIn form</h1>
+                            <h1><i class="fa fa-cubes"></i>SignUp form</h1>
                             <p>&copy; 2023 IVKHK</p>
                         </div>
                     </div>
