@@ -12,7 +12,7 @@
                 </div>
                 @endif
                 <p class="login-box-msg">Sign up to start your dashboard</p>
-                <form action="{{url('login')}}" method="POST">
+                <form action="{{url('register')}}" method="POST">
                     @csrf
                     <h1>Sign Up Form</h1>
                     <div>

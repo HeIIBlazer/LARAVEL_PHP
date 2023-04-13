@@ -19,14 +19,12 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return view('start'); // - start Login form
+    return view('startMainPage'); // - start Login form
 });
-Route::get('/register', [UserController::class, 'form_register']);
-Route::post('/register', [UserController::class, 'store_register']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
-
+    
     Route::middleware('manager')->group(function () {
         //--------------------------Event list CRUD
         //Список - вывод на страницу - get
@@ -40,7 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
         //---------------------- delete event
         Route::delete('/eventlist/{event}', [EventController::class, 'destroy']);
     });
-
+    
     Route::middleware('admin')->group(function () {
         //by register user
         Route::get('/users', [UserController::class, 'index']);
@@ -67,3 +65,6 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/register', [UserController::class, 'form_register']);
+Route::post('/register', [UserController::class, 'store_register']);

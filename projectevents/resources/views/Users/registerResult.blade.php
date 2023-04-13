@@ -6,7 +6,7 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                @if (session()->has('error'))
+                @if (session()->has('error'))a
                 <div class="alert alert-danger">
                     {{session()->get('error')}}
                 </div>
@@ -14,7 +14,7 @@
                 <p class="login-box-msg">Sign up to start your dashboard</p>
                 <form>
                     @csrf
-                    <h1>Sign Up Form</h1>
+                    <h1>NU TI I LOX</h1>
                     <div>
                         <p class="change_link">
                             <a href="/" class=""> Log In </a>

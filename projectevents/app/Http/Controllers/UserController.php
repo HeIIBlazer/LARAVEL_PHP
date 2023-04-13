@@ -68,11 +68,18 @@ class UserController extends Controller
 
     public function form_register()
     {
-        return view('users/register');
+        return view('users.register');
     }
 
     public function store_register(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required',
+
+        ]);
 
         //Запрос на добавление пользователя
         User::create([
