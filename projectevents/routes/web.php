@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegisterController;
 
 
 /*
@@ -18,9 +19,16 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('startMainPage'); // - start Login form
-});
+// Route::get('/', function () {
+//     return view('startMainPage'); // - start Login form
+// });
+Route::get('/', [EventController::class, 'listLimit']);
+Route::get('/event/{event}', [EventController::class, 'show']);
+
+Route::get('/events', [EventController::class, 'allEvents'])->name('search');
+
+Route::get('/event/{event}/register', [EventController::class, 'registration']);
+Route::post('/event/{event}/register', [EventController::class, 'register']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
@@ -37,6 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/editevent/{event}', [EventController::class, 'update']);
         //---------------------- delete event
         Route::delete('/eventlist/{event}', [EventController::class, 'destroy']);
+        Route::get('/registerlist', [RegisterController::class, 'index']);
     });
     
     Route::middleware('admin')->group(function () {

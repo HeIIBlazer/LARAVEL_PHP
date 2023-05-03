@@ -72,6 +72,9 @@
                                     </ul>
                                 </li>
                                 @endif
+                                <li>
+                                    <a href="/">Home</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
